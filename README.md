@@ -12,10 +12,10 @@ In order to run importData successfully it needs to match the following document
 - 'Translation' : a document containing translation of store names. Should have 'Translation' in the title
 
 MAKING A NEW VERSION
-- Create a new sheet in an empty folder
+- In Google Drive, create a new sheet in an empty folder
 - Name the first tab 'MAIN'
-- Mark and copy all of the content of this script
-- Go into Tools -> Script editor, replace function myFunction() {} by pasting
+- Mark and copy all of the content of Main.js in this repository
+- In your newly created sheet, go into Tools -> Script editor, and replace function myFunction() {} by pasting the content of Main.js
 - At the top, change 'Untitled project' into desired title
 - Press Debug, make sure it's set to onOpen, allow the permissions required
 - Exit out of script editor tab, update the sheet by reloading the page
