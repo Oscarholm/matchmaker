@@ -361,7 +361,7 @@ function importData(fileName) {
   var type = blob.getContentType();
   
   if (type == "text/csv") {
-    var contents = Utilities.parseCsv(blob.getDataAsString());
+    var contents = Utilities.parseCsv(blob.getDataAsString(),";");
     // This is a terrible fix for date formatting. Docs can't read Euro dd/mm/yy format
     if (name.match("Purchase-Order") != null) { 
       var contents = fixDateFormat(contents);
@@ -452,7 +452,7 @@ function convertXLS(id){
   while(files.hasNext()){
     var xFile = files.next();
     var name = xFile.getName();
-    if (name.indexOf('.xlsx')>-1){ 
+    if (name.toLowerCase().indexOf('.xlsx')>-1) {
       var ID = xFile.getId();
       var xBlob = xFile.getBlob();
       var newFile = {
