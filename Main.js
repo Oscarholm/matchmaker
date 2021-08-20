@@ -397,8 +397,9 @@ function fixDateFormat(content) {
   for (i in content[0]) {
     // If it contains Date then convert
     if (content[0][i].split("_").indexOf("Date") != -1 ) {
+      var divider = content[1][i].slice(4,5); // Divider can either be / or -
       for (j = 1; j < content.length; j++) {
-        var before = content[j][i].split("/");
+        var before = content[j][i].split(divider);
         var after = before[1]+"/"+before[0]+"/"+before[2]
         content[j][i] = after;
       }
