@@ -362,10 +362,11 @@ function importData(fileName) {
   
   if (type == "text/csv") {
     var contents = Utilities.parseCsv(blob.getDataAsString(),";");
-    // This is a terrible fix for date formatting. Docs can't read Euro dd/mm/yy format
-    if (name.match("Purchase-Order") != null) { 
-      var contents = fixDateFormat(contents);
-     }
+     
+     // this was a fix for a date format issue which self healed, but might return.
+     // if (name.match("Purchase-Order") != null) { 
+     // var contents = fixDateFormat(contents);
+     //}
     
     var sheetName = writeDataToSheet(contents, fileName);
     fixDateFormat(sheetName);
@@ -398,9 +399,10 @@ function fixDateFormat(content) {
     // If it contains Date then convert
     if (content[0][i].split("_").indexOf("Date") != -1 ) {
       var divider = content[1][i].slice(4,5); // Divider can either be / or -
+      var yearPosition = content[1][i]
       for (j = 1; j < content.length; j++) {
         var before = content[j][i].split(divider);
-        var after = before[1]+"/"+before[0]+"/"+before[2]
+        var after = before[1]+"/"+before[2]+"/"+before[0];
         content[j][i] = after;
       }
     }
